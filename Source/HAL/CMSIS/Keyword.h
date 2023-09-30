@@ -9,8 +9,9 @@ typedef unsigned long long   U64;
 typedef float                F32;
 typedef double               F64;
 
+
 typedef enum
 {
-    FLASE,
+    FALSE,
     TRUE
 } BOOL;
