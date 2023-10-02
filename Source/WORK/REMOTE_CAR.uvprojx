@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS</IncludePath>
+              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -527,11 +527,6 @@
           <GroupName>DEV</GroupName>
           <Files>
             <File>
-              <FileName>DevGpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\DEV\DevGPIO\DevGpio.c</FilePath>
-            </File>
-            <File>
               <FileName>DevI2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\DEV\DevI2C\DevI2C.c</FilePath>
@@ -545,6 +540,13 @@
         </Group>
         <Group>
           <GroupName>HAL</GroupName>
+          <Files>
+            <File>
+              <FileName>HalGpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HAL\HalGpio.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>SYS</GroupName>
