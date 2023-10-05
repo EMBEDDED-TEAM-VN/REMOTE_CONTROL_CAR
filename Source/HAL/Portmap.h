@@ -24,7 +24,7 @@
 #define PMAP_ONC_PA11     A,11 
 #define PMAP_ONC_PA12     A,12 
 #define PMAP_ONC_PA13     A,13 //SWIO
-#define PMAP_ONC_PA14     A,14 //SWCK
+#define PMAP_ONC_PA14     A,14 //SWCLK
 #define PMAP_ONC_PA15     A,15 
 
 
@@ -48,7 +48,7 @@
 
 /*GPIOC*/
 #define PMAP_ONC_PC13     C,13 //TAMPER-RT C
-#define PMAP_ONC_PC14     C,14 //OSC32_IN 32KhZ
+#define PMAP_ONC_PC14     C,14 //OSC32_IN - 32KhZ
 #define PMAP_ONC_PC15     C,15 //OSC32_OUT- 32KHZ
 
 /*GPIOd*/
