@@ -5,7 +5,7 @@
 .\objects\system_stm32f10x.o: ..\SYS\SystemLib\system_stm32f10x.h
 .\objects\system_stm32f10x.o: ..\HAL\LIB\inc\stm32f10x_conf.h
 .\objects\system_stm32f10x.o: ..\HAL\LIB\inc\stm32f10x_adc.h
-.\objects\system_stm32f10x.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
+.\objects\system_stm32f10x.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\system_stm32f10x.o: ..\HAL\LIB\inc\stm32f10x_bkp.h
 .\objects\system_stm32f10x.o: ..\HAL\LIB\inc\stm32f10x_can.h
 .\objects\system_stm32f10x.o: ..\HAL\LIB\inc\stm32f10x_cec.h

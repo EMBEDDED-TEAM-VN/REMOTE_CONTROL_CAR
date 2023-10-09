@@ -1,11 +1,11 @@
 .\objects\sysmain.o: ..\SYS\MainLoop\sysmain.c
-.\objects\sysmain.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
+.\objects\sysmain.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\sysmain.o: ..\HAL\CMSIS\core_cm3.h
 .\objects\sysmain.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\sysmain.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h
+.\objects\sysmain.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_conf.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_adc.h
-.\objects\sysmain.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
+.\objects\sysmain.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_bkp.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_can.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_cec.h
@@ -28,3 +28,5 @@
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_usart.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\stm32f10x_wwdg.h
 .\objects\sysmain.o: ..\HAL\LIB\inc\misc.h
+.\objects\sysmain.o: ..\HAL\Portmap.h
+.\objects\sysmain.o: ..\HAL\HalGpio.h
