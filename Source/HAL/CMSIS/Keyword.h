@@ -1,3 +1,5 @@
+#define PUBLIC
+#define PRIVATE 			static
 typedef signed char          S08;
 typedef signed short         S16;
 typedef signed long          S32;
