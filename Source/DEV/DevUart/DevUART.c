@@ -2,6 +2,7 @@
 
 #define BUFFER_TRANSMIT_SIZE1   1000
 #define BUFFER_RECEIVE_SIZE1    5
+
 PRIVATE BOOL mbfTransmittingUART1;
 PRIVATE BOOL mbfWritingTXBufferUART1;
 
@@ -54,20 +55,20 @@ PUBLIC void DevSetUARTService(U08 u08Chanel, U08 u08ServiceSize, void (*pReceive
 {
 	switch(u08Chanel)
 	{
-		case USART1:
+		case UART_CHANEL_1:
 			mfpReceiveUART1Service = pReceiveService;
 			mu08ReceiveUART1ServiceSize = u08ServiceSize;
 		break;
-		case USART2:
+		case UART_CHANEL_2:
 
 		break;
-		case USART3:
+		case UART_CHANEL_3:
 
 		break;
-		case USART4:
+		case UART_CHANEL_4:
 
 		break;
-		case USART5:
+		case UART_CHANEL_5:
 
 		break;
 	}

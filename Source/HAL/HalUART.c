@@ -3,8 +3,8 @@
 
 void HalUART1PortInit(void)
 {
-	PORT_SET_TYPE();
-	PORT_SET_TYPE();
+	PORT_SET_TYPE(PMAP_ONC_PA09,PORT_ALTF);
+	PORT_SET_TYPE(PMAP_ONC_PA10,PORT_ALTF);
 }
 
 void HalUART1Init(void)

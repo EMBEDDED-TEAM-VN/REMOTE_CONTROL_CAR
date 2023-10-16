@@ -1,3 +1,5 @@
+
+
 #define PUBLIC
 #define PRIVATE 			static
 typedef signed char          S08;
@@ -11,9 +13,6 @@ typedef unsigned long long   U64;
 typedef float                F32;
 typedef double               F64;
 
+typedef unsigned char BOOL;
 
-typedef enum
-{
-    FALSE,
-    TRUE
-} BOOL;
+
