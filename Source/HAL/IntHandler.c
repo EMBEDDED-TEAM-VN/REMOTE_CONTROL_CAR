@@ -44,7 +44,7 @@ void UART5_IRQHandler(void)
 
 void SysTick_Handler(void)
 {
-	//SysIsrTickTimer();
+	SysIsrTickTimer();
 }
 
 

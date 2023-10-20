@@ -571,6 +571,11 @@
               <FileType>1</FileType>
               <FilePath>..\SYS\SystemLib\system_stm32f10x.c</FilePath>
             </File>
+            <File>
+              <FileName>SysTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYS\SystemLib\SysTimer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

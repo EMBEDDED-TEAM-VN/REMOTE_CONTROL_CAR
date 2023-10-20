@@ -2,16 +2,16 @@
 #include "Portmap.h"
 #include "DevUART.h"
 #include "MidLoraCom.h"
-//#include "SysTimer.h"
+#include "SysTimer.h"
 
 int main(void)
 {
-	//SysInitTimer();
+	SysInitTimer();
 	DevUARTInit();
 	MidLoraInit();
 	while(TRUE)
 	{
-		//SysMainLoopTimer();
+		SysMainLoopTimer();
 		MidLoraCommLoop();
 	}
 }
