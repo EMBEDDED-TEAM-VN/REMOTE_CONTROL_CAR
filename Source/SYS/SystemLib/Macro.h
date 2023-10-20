@@ -15,3 +15,5 @@
 #define STOP        0
 #define DESCREASE   0
 #define INSCREASE   1
+#define SET		    1
+#define CLEAR		1
