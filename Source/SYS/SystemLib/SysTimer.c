@@ -11,6 +11,7 @@ PRIVATE U16 mu16Main1mSecCnt;
 PRIVATE U16 mu16Main10mSecCnt;
 PRIVATE U16 mu16Main50mSecCnt;
 PRIVATE U16 mu16Main1SecCnt;
+TTimeFlag   gsuMainTimerFlag;
 
 
 PUBLIC void SysInitTimer(void)
@@ -33,23 +34,23 @@ PUBLIC void SysMainLoopTimer(void)
 		mu16Main10mSecCnt++;
 		if(mu16Main10mSecCnt >= 10)
 		{
-			gsuMainTimerFlag.bf10mSec = SET;
+			gsuMainTimerFlag.bf10mSec = TRUE;
 			mu16Main10mSecCnt = 0;
 			mu16Main50mSecCnt++;
 			if(mu16Main50mSecCnt >= 5)
 			{
 				mu16Main50mSecCnt = 0;
-				gsuMainTimerFlag.bf50mSec = SET;
+				gsuMainTimerFlag.bf50mSec = TRUE;
 				mu16Main1SecCnt++;
-				if(mu16Main1SecCnt & 0x01)
+				if((mu16Main1SecCnt & 0x01) == 0)
 				{
-					gsuMainTimerFlag.bf100mSec = SET;
+					gsuMainTimerFlag.bf100mSec = TRUE;
 					if(mu16Main1SecCnt == 10 || mu16Main1SecCnt >= 20)
 					{
-						gsuMainTimerFlag.bf500mSec = SET;
+						gsuMainTimerFlag.bf500mSec = TRUE;
 						if(mu16Main1SecCnt >= 20)
 						{
-							gsuMainTimerFlag.bf1Sec = SET;
+							gsuMainTimerFlag.bf1Sec = TRUE;
 							mu16Main1SecCnt = 0;
 						}
 					}

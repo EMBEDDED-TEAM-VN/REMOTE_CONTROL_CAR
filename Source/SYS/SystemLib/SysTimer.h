@@ -4,13 +4,13 @@
  *  Created on: Oct 19, 2023
  *      Author: DINH KHANH
  */
-#include "Keyword.h"
-#include "core_cm3.h"
-#include "Macro.h"
-#include "stm32f10x.h"
 
 #ifndef SYS_SYSTEMLIB_SYSTIMER_H_
 #define SYS_SYSTEMLIB_SYSTIMER_H_
+
+#include "Keyword.h"
+#include "Macro.h"
+#include "stm32f10x.h"
 
 typedef struct ST_TimeBit{
 	U08      bf1Sec          :1;
@@ -20,7 +20,7 @@ typedef struct ST_TimeBit{
 	U08      bf10mSec        :1;
 } TTimeFlag;
 
-TTimeFlag   gsuMainTimerFlag;
+extern TTimeFlag   gsuMainTimerFlag;
 
 #define gbfSys10mSecFlag            gsuMainTimerFlag.bf10mSec
 #define gbfSys50mSecFlag            gsuMainTimerFlag.bf50mSec

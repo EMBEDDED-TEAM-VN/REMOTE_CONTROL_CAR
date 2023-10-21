@@ -1,6 +1,4 @@
-#include "HalUART.h"
-#include "DevUART.h"
-#include "SysTimer.h"
+#include "IntHandler.h"
 
 void USART1_IRQHandler(void)
 {
@@ -9,6 +7,7 @@ void USART1_IRQHandler(void)
     {
         // Xử lý việc nhận dữ liệu
     	DevUART1ReceiveData();
+    	USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         // Xử lý dữ liệu nhận được ở đây
     }
 
@@ -17,6 +16,7 @@ void USART1_IRQHandler(void)
     {
         // Xử lý việc truyền dữ liệu
     	DevUART1TransmitData();
+    	USART_ClearITPendingBit(USART1, USART_IT_TXE);
         // Ghi dữ liệu vào thanh ghi DR để truyền
 
     }
