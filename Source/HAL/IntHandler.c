@@ -3,7 +3,7 @@
 void USART1_IRQHandler(void)
 {
     // Kiểm tra ngắt nhận dữ liệu (RXNE)
-    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET)
+    if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
     {
         // Xử lý việc nhận dữ liệu
     	DevUART1ReceiveData();
@@ -12,7 +12,7 @@ void USART1_IRQHandler(void)
     }
 
     // Kiểm tra ngắt truyền dữ liệu (TXE)
-    if (USART_GetITStatus(USART1, USART_IT_TXE) == SET)
+    if (USART_GetITStatus(USART1, USART_IT_TXE) != RESET)
     {
         // Xử lý việc truyền dữ liệu
     	DevUART1TransmitData();

@@ -34,3 +34,13 @@ PUBLIC void TimerManager(void)
 		}
 	}
 }
+
+PUBLIC U08 GetMinute(void)
+{
+	return mu08Second;
+}
+
+PUBLIC void ResetMinute(void)
+{
+	mu08Minute = 0;
+}

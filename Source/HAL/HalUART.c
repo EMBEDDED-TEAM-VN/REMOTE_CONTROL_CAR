@@ -24,7 +24,7 @@ void HalUART1Init(void)
 
 	// Cho phép ngắt truyền/nhận dữ liệu UART
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
-    USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+    //USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 
 	// Cho phép UART
 	USART_Cmd(USART1, ENABLE);
