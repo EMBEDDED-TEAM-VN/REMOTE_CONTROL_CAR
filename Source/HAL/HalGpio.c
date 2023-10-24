@@ -47,7 +47,7 @@ void HalPortSetType(GPIO_TypeDef* pGPIOx, uint16_t GPIO_Pin, GPIOMode_TypeDef GP
 	}
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Type;
-	if(GPIO_Type == PORT_OUT)
+	if(GPIO_Type == PORT_OUT || GPIO_Type == PORT_ALTF)
 	{
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	}
