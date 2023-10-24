@@ -4,7 +4,7 @@
 void HalUART1PortInit(void)
 {
 	PORT_SET_TYPE(PMAP_ONC_PA09,PORT_ALTF);
-	PORT_SET_TYPE(PMAP_ONC_PA10,PORT_ALTF);
+	PORT_SET_TYPE(PMAP_ONC_PA10,PORT_IN);
 }
 
 void HalUART1Init(void)
@@ -24,7 +24,7 @@ void HalUART1Init(void)
 
 	// Cho phép ngắt truyền/nhận dữ liệu UART
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
-    USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+    //USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 
 	// Cho phép UART
 	USART_Cmd(USART1, ENABLE);

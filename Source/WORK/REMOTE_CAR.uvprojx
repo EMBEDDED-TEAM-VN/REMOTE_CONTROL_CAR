@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID</IncludePath>
+              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID;..\HAL\LIB;..\APP\Application</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -570,6 +570,11 @@
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYS\SystemLib\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>SysTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYS\SystemLib\SysTimer.c</FilePath>
             </File>
           </Files>
         </Group>

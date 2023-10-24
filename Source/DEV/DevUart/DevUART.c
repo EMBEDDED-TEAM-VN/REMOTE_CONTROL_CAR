@@ -107,7 +107,7 @@ PUBLIC void DevUART1TransmitData(void)
 		if(HAL_IS_BUFFER_UART1_EMPTY() == TRUE)
 		{
 			u08TransmitData = mau08BufferUART1TransmitData[mu16TransmitPopIndex1];
-			if(mu16TransmitPopIndex1 < BUFFER_TRANSMIT_SIZE1 -1)
+			if(mu16TransmitPopIndex1 < (BUFFER_TRANSMIT_SIZE1 -1))
 			{
 				mu16TransmitPopIndex1++;
 			}
@@ -125,6 +125,7 @@ PUBLIC void DevUART1TransmitData(void)
 	else
 	{
 		mbfTransmittingUART1 = FALSE;
+		USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
 	}
 }
 
@@ -147,4 +148,5 @@ PUBLIC void DevSetUART1TransmitData(U08* pu08Data, U16 u16DataSize)
 		}
 	}
 	mbfWritingTXBufferUART1 = FALSE;
+	USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 }
