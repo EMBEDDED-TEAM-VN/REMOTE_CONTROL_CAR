@@ -8,15 +8,13 @@ int main(void)
 	DevUARTInit();
 	MidLoraInit();
 	ApplicationInit();
+	DisplayInit();
 	while(TRUE)
 	{
 		SysMainLoopTimer();
 		MidLoraCommLoop();
 		DevMainLoodUART();
 		TimerManager();
-		if(gbfSys100mSecFlag == TRUE)
-		{
-			DevSetUART1TransmitData(mau08Test,400);
-		}
+		DisplayManager();
 	}
 }

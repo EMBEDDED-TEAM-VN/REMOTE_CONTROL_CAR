@@ -10,10 +10,19 @@ PRIVATE U08 mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE];
 PRIVATE U08 mu08ReceivePushIndex;
 PRIVATE U08 mu08ReceivePopIndex;
 PRIVATE U08 mu08ReceiveDataPacketLoraIndex;
+PRIVATE U08 mau08TransmitLoraData[BUFFER_LORA_PROCESS_SIZE];
+PUBLIC void (*TransmitDataLora)(U08* , U16 );
 
 PRIVATE void ReceiveServiceLoraUART(void* pReceiveBuffer);
 PRIVATE void ReceiveLoraDataPacket(void);
 PRIVATE BOOL AnalystLoraDataPacket(void);
+PRIVATE void SetFunctionTransmitData(void (*pTransmitData)(U08*, U16));
+
+PRIVATE void SetFunctionTransmitData(void (*pTransmitData)(U08*, U16))
+{
+	TransmitDataLora = pTransmitData;
+}
+
 
 PUBLIC void MidLoraInit(void)
 {
@@ -23,6 +32,8 @@ PUBLIC void MidLoraInit(void)
 	memset(mau08BufferLoraReceive, 0, BUFFER_LORA_RECEIVE_SIZE);
 	memset(mau08BufferLoraProcessing, 0, BUFFER_LORA_PROCESS_SIZE);
 	memset(mau08BufferLoraDataPacket, 0, BUFFER_LORA_PROCESS_SIZE);
+	memset(mau08TransmitLoraData, 0, BUFFER_LORA_PROCESS_SIZE);
+	SetFunctionTransmitData(DevSetUART1TransmitData);
 	LORA_COMM(RECEIVE_SERVICE_SIZE,ReceiveServiceLoraUART);
 }
 

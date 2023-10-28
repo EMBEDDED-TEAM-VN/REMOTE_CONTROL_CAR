@@ -11,7 +11,6 @@
 #include "SysTimer.h"
 #include "Portmap.h"
 #include "DevUART.h"
-#include "MidLoraCom.h"
 #include "Application.h"
 
 #endif /* SYS_MAINLOOP_SYSMAIN_H_ */

@@ -1,3 +1,14 @@
+/*
+ * SystemLib.h
+ *
+ *  Created on: Oct 28, 2023
+ *      Author: DINH KHANH
+ */
+
+#ifndef SYS_SYSTEMLIB_SYSTEMLIB_H_
+#define SYS_SYSTEMLIB_SYSTEMLIB_H_
+
+
 #include "Keyword.h"
 
 PRIVATE U16 CaculateCheckSum(U08* pData, U16 u16DataSize)
@@ -11,3 +22,7 @@ PRIVATE U16 CaculateCheckSum(U08* pData, U16 u16DataSize)
 
 	    return u16Checksum;
 }
+
+
+
+#endif /* SYS_SYSTEMLIB_SYSTEMLIB_H_ */

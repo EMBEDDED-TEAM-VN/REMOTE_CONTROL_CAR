@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID;..\HAL\LIB;..\APP\Application</IncludePath>
+              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID;..\HAL\LIB;..\APP\Application;..\APP\Display</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -520,6 +520,11 @@
               <FileName>Application.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\APP\Application\Application.c</FilePath>
+            </File>
+            <File>
+              <FileName>Display.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\Display\Display.c</FilePath>
             </File>
           </Files>
         </Group>

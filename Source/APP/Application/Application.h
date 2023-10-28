@@ -9,6 +9,7 @@
 #define APP_APPLICATION_APPLICATION_H_
 
 #include "SysTimer.h"
+#include "Display.h"
 
 #define TEST_TIMER  10
 

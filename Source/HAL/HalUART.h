@@ -1,3 +1,13 @@
+/*
+ * HalUART.h
+ *
+ *  Created on: Oct 28, 2023
+ *      Author: DINH KHANH
+ */
+
+#ifndef HAL_HALUART_H_
+#define HAL_HALUART_H_
+
 #include "stm32f10x_usart.h"
 #include "Portmap.h"
 
@@ -8,3 +18,8 @@
 void HalUART1PortInit(void);
 void HalUART1Init(void);
 
+
+
+
+
+#endif /* HAL_HALUART_H_ */

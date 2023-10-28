@@ -1,3 +1,14 @@
+/*
+ * Macro.h
+ *
+ *  Created on: Oct 28, 2023
+ *      Author: DINH KHANH
+ */
+
+#ifndef SYS_SYSTEMLIB_MACRO_H_
+#define SYS_SYSTEMLIB_MACRO_H_
+
+
 //--- Standard Macro Define ---//
 #define FALSE       0
 #define TRUE        1
@@ -15,3 +26,7 @@
 #define STOP        0
 #define DESCREASE   0
 #define INSCREASE   1
+
+
+
+#endif /* SYS_SYSTEMLIB_MACRO_H_ */

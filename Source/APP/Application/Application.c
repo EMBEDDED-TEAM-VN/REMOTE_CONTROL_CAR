@@ -21,6 +21,8 @@ PUBLIC void TimerManager(void)
 		{
 			mu08SecondCnt = 0;
 			mu08Second++;
+			SetDisplayText(mu08Second);
+			SetSound(mu08Second);
 			if(mu08Second >= 60)
 			{
 				mu08Minute++;
