@@ -1,22 +1,22 @@
-#include "Sysmain.h"
+#include "stm32f10x.h"
+#include "Portmap.h"
+#include "Keyword.h"
 
-PRIVATE U08 mau08Test[400];
-int main(void)
+U08 TIM1_IRQn;
+void TIM1_Configuration(U08 TIM1_Channel);
+void Delay_Timer1_StandardLibrary_Ms(U32 milliseconds);
+
+void main()
 {
-	memset(mau08Test, 0, 400);
-	SysInitTimer();
-	DevUARTInit();
-	MidLoraInit();
-	ApplicationInit();
-	while(TRUE)
-	{
-		SysMainLoopTimer();
-		MidLoraCommLoop();
-		DevMainLoodUART();
-		TimerManager();
-		if(gbfSys100mSecFlag == TRUE)
+    TIM1_Configuration(TIM1_IRQn);
+		TIM1_IRQn = 1;
+    while(1)
 		{
-			DevSetUART1TransmitData(mau08Test,400);
+			    Delay_Timer1_StandardLibrary_Ms(1000);
+					PORT_SET_TYPE(PMAP_ONC_PC13,PORT_OUT);
+					PORT_SET_DATA(PMAP_ONC_PC13,1);
+					Delay_Timer1_StandardLibrary_Ms(1000);
+					//PORT_SET_TYPE(C,13,PORT_OUT);
+					PORT_SET_DATA(PMAP_ONC_PC13,0);
 		}
-	}
 }
