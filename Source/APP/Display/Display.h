@@ -12,8 +12,6 @@
 
 PUBLIC void DisplayInit(void);
 PUBLIC void DisplayManager(void);
-PUBLIC void SetDisplayText(U08 u08Data);
-PUBLIC void SetSound(U08 u08Data);
 
 
 

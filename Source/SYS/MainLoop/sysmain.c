@@ -8,13 +8,11 @@ int main(void)
 	DevUARTInit();
 	MidLoraInit();
 	ApplicationInit();
-	DisplayInit();
 	while(TRUE)
 	{
 		SysMainLoopTimer();
 		MidLoraCommLoop();
 		DevMainLoodUART();
 		TimerManager();
-		DisplayManager();
 	}
 }

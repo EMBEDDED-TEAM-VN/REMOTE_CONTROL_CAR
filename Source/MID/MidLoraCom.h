@@ -17,6 +17,8 @@
 extern PUBLIC void (*TransmitDataLora)(U08*, U16);
 PUBLIC void MidLoraInit(void);
 PUBLIC void MidLoraCommLoop(void);
+PUBLIC void SetDisplayText(U08 u08Data);
+PUBLIC void SetSound(U08 u08Data);
 
 
 
