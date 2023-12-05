@@ -12,5 +12,6 @@
 #include "Portmap.h"
 #include "DevUART.h"
 #include "Application.h"
+#include "Hal.h"
 
 #endif /* SYS_MAINLOOP_SYSMAIN_H_ */

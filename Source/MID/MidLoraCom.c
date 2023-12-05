@@ -14,9 +14,11 @@ PRIVATE U08 mau08DataSound[SIZE_DATA_SOUND];
 PRIVATE U08 mau08BufferLoraReceive[BUFFER_LORA_RECEIVE_SIZE];
 PRIVATE U08 mau08BufferLoraProcessing[BUFFER_LORA_PROCESS_SIZE];
 PRIVATE U08 mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE];
+PRIVATE U08 mau08BufferTest[BUFFER_LORA_PROCESS_SIZE];
 PRIVATE U08 mu08ReceivePushIndex;
 PRIVATE U08 mu08ReceivePopIndex;
 PRIVATE U08 mu08ReceiveDataPacketLoraIndex;
+PRIVATE BOOL bmSendData;
 PRIVATE U08 mau08TransmitLoraData[BUFFER_LORA_PROCESS_SIZE];
 PUBLIC void (*TransmitDataLora)(U08* , U16 );
 
@@ -28,6 +30,7 @@ PRIVATE void TransmitDataToRemote(void);
 
 PUBLIC void MidLoraInit(void)
 {
+	bmSendData = FALSE;
 	mu08ReceivePushIndex 	= 0;
 	mu08ReceivePopIndex 	= 0;
 	mu08ReceiveDataPacketLoraIndex = 0;
@@ -38,6 +41,7 @@ PUBLIC void MidLoraInit(void)
 	memset(mau08DataTransmit,0,SIZE_DATA_PACKET);
 	memset(mau08DataDisplay,0,SIZE_DATA_DISPLAY);
 	memset(mau08DataSound,0,SIZE_DATA_SOUND);
+	memset(mau08BufferTest, 0, BUFFER_LORA_PROCESS_SIZE);
 	LORA_COMM(RECEIVE_SERVICE_SIZE,ReceiveServiceLoraUART);
 }
 
@@ -45,12 +49,14 @@ PUBLIC void SetDisplayText(U08 u08Data)
 {
 	U08 u08Index =0;
 	mau08DataDisplay[u08Index] = u08Data;
+	bmSendData = TRUE;
 }
 
 PUBLIC void SetSound(U08 u08Data)
 {
 	U08 u08Index =0;
 	mau08DataSound[u08Index] = u08Data;
+	bmSendData = TRUE;
 }
 
 PUBLIC void MidLoraCommLoop(void)
@@ -62,13 +68,20 @@ PUBLIC void MidLoraCommLoop(void)
 	if(bResultDataPacket == TRUE)
 	{
 		//Get data from data packet
+		memcpy(mau08BufferTest,mau08BufferLoraDataPacket,BUFFER_LORA_PROCESS_SIZE);
 	}
 	else
 	{
 		memset(mau08BufferLoraDataPacket, 0, BUFFER_LORA_PROCESS_SIZE);
 	}
-
-	TransmitDataToRemote();
+	if(gbfSys100mSecFlag == TRUE)
+	{
+		if(bmSendData == TRUE)
+		{
+			TransmitDataToRemote();
+			bmSendData = FALSE;
+		}
+	}
 }
 PRIVATE void ReceiveServiceLoraUART(void* pReceiveBuffer)
 {
