@@ -14,6 +14,7 @@ PUBLIC void ApplicationInit(void)
 }
 PUBLIC void ApplicationManager(void)
 {
+	char mau08Test[1] ={0};
 	if(gbfSys100mSecFlag == TRUE)
 	{
 		mu08SecondCnt++;
@@ -21,6 +22,10 @@ PUBLIC void ApplicationManager(void)
 		{
 			mu08SecondCnt = 0;
 			mu08Second++;
+			//DevLCDClear();
+			DevLCDSetCursor(0, 1);
+			sprintf(mau08Test,"%0d",mu08Second);
+			DevLCDPrintString(mau08Test);
 			//SetDisplayText(mu08Second);
 			SetSound(mu08Second);
 			if(mu08Second >= 60)
