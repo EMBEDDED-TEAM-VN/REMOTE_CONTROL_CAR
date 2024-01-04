@@ -12,7 +12,7 @@ PUBLIC void ApplicationInit(void)
 	mu08Hours = 0;
 	mu08SecondCnt = 0;
 }
-PUBLIC void TimerManager(void)
+PUBLIC void ApplicationManager(void)
 {
 	if(gbfSys100mSecFlag == TRUE)
 	{
@@ -21,9 +21,12 @@ PUBLIC void TimerManager(void)
 		{
 			mu08SecondCnt = 0;
 			mu08Second++;
+			//SetDisplayText(mu08Second);
+			SetSound(mu08Second);
 			if(mu08Second >= 60)
 			{
 				mu08Minute++;
+				SetDisplayText(mu08Minute);
 				mu08Second = 0;
 				if(mu08Minute >= 60)
 				{

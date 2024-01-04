@@ -1,9 +1,8 @@
 #include "Sysmain.h"
-
-PRIVATE U08 mau08Test[400];
+#define SOUND_ID 0X34
+#define DISPLAY_ID 0X35
 int main(void)
 {
-	memset(mau08Test, 0, 400);
 	SysInitTimer();
 	DevUARTInit();
 	MidLoraInit();
@@ -11,12 +10,8 @@ int main(void)
 	while(TRUE)
 	{
 		SysMainLoopTimer();
+		//DevMainLoodUART();
+		ApplicationManager();
 		MidLoraCommLoop();
-		DevMainLoodUART();
-		TimerManager();
-		if(gbfSys100mSecFlag == TRUE)
-		{
-			DevSetUART1TransmitData(mau08Test,400);
-		}
 	}
 }

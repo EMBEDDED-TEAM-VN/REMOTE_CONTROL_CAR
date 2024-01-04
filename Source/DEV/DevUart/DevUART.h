@@ -2,6 +2,7 @@
 #include "Keyword.h"
 #include "HalUART.h"
 #include "Macro.h"
+#include <stdio.h>
 
 #define UART_CHANEL_1			1
 #define UART_CHANEL_2			2

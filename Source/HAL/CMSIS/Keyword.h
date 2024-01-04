@@ -1,3 +1,13 @@
+/*
+ * Keyword.h
+ *
+ *  Created on: Oct 28, 2023
+ *      Author: DINH KHANH
+ */
+
+#ifndef HAL_CMSIS_KEYWORD_H_
+#define HAL_CMSIS_KEYWORD_H_
+
 
 
 #define PUBLIC
@@ -16,3 +26,8 @@ typedef double               F64;
 typedef unsigned char BOOL;
 
 
+
+
+
+
+#endif /* HAL_CMSIS_KEYWORD_H_ */

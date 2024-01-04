@@ -1,4 +1,6 @@
 #include "IntHandler.h"
+#include "Hal.h"
+#include "MidLoraCom.h"
 
 void USART1_IRQHandler(void)
 {
@@ -47,6 +49,14 @@ void SysTick_Handler(void)
 	SysIsrTickTimer();
 }
 
+void EXTI0_IRQHandler(void) {
+    if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+        // Xử lý sự kiện nút nhấn ở đây
+        // ...
+
+        EXTI_ClearITPendingBit(EXTI_Line0);
+    }
+}
 
 
 

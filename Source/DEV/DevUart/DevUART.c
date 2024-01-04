@@ -1,8 +1,12 @@
 #include "DevUART.h"
 
-#define BUFFER_TRANSMIT_SIZE1   1000
+//#define USE_TERA_TERM
+#define BUFFER_TRANSMIT_SIZE1   100
 #define BUFFER_RECEIVE_SIZE1    5
 
+#if defined USE_TERA_TERM
+PRIVATE char mau08ConvertNumberToString[2];
+#endif
 PRIVATE BOOL mbfTransmittingUART1;
 PRIVATE BOOL mbfWritingTXBufferUART1;
 
@@ -27,6 +31,9 @@ PUBLIC void DevUARTInit(void)
 	mu08ReceiveUART1ServiceSize = 0;
 	memset(mau08BufferUART1TransmitData, 0, BUFFER_TRANSMIT_SIZE1);
 	memset(mau08BufferUART1ReceiveData, 0, BUFFER_RECEIVE_SIZE1);
+#if defined USE_TERA_TERM
+	memset(mau08ConvertNumberToString, 0, 2);
+#endif
 	HalUART1Init();
 }
 
@@ -137,10 +144,19 @@ PUBLIC void DevSetUART1TransmitData(U08* pu08Data, U16 u16DataSize)
 	mbfWritingTXBufferUART1 = TRUE;
 	for(u16Index = 0; u16Index < u16DataSize; u16Index++)
 	{
+#if defined USE_TERA_TERM
+		sprintf(mau08ConvertNumberToString,"%X",pu08Data[u16Index]);
+		memcpy(mau08BufferUART1TransmitData + mu16TransmitPushIndex1,mau08ConvertNumberToString,2);
+#else
 		mau08BufferUART1TransmitData[mu16TransmitPushIndex1] = pu08Data[u16Index];
+#endif
 		if(mu16TransmitPushIndex1 < (BUFFER_TRANSMIT_SIZE1 - 1))
 		{
+#if defined USE_TERA_TERM
+			mu16TransmitPushIndex1 = mu16TransmitPushIndex1 + 2;
+#else
 			mu16TransmitPushIndex1++;
+#endif
 		}
 		else
 		{
