@@ -32,3 +32,13 @@
 .\objects\application.o: ..\HAL\LIB\inc\stm32f10x_usart.h
 .\objects\application.o: ..\HAL\LIB\inc\stm32f10x_wwdg.h
 .\objects\application.o: ..\HAL\LIB\inc\misc.h
+.\objects\application.o: ..\APP\Display\Display.h
+.\objects\application.o: ..\MID\MidLoraCom.h
+.\objects\application.o: ..\DEV\DevUart\DevUART.h
+.\objects\application.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\application.o: ..\HAL\HalUART.h
+.\objects\application.o: ..\HAL\Portmap.h
+.\objects\application.o: ..\HAL\HalGpio.h
+.\objects\application.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\application.o: ..\SYS\SystemLib\SystemLib.h
+.\objects\application.o: ..\DEV\DevI2C\DevI2C.h

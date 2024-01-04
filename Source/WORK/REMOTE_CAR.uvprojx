@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID;..\HAL\LIB;..\APP\Application;..\APP\Display</IncludePath>
+              <IncludePath>..\HAL\LIB\inc;..\HAL\CMSIS;..\SYS;..\HAL;..\DEV\DevUart;..\SYS\SystemLib;..\MID;..\HAL\LIB;..\APP\Application;..\APP\Display;..\DEV\DevI2C</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

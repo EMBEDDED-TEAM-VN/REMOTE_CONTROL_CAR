@@ -13,5 +13,6 @@
 #include "DevUART.h"
 #include "Application.h"
 #include "Hal.h"
+#include "DevI2C.h"
 
 #endif /* SYS_MAINLOOP_SYSMAIN_H_ */

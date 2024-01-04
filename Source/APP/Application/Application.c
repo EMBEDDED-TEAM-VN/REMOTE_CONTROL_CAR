@@ -21,11 +21,12 @@ PUBLIC void ApplicationManager(void)
 		{
 			mu08SecondCnt = 0;
 			mu08Second++;
-			//SetDisplayText(mu08Second);
+			SetCursor(0,0);
 			SetSound(mu08Second);
 			if(mu08Second >= 60)
 			{
 				mu08Minute++;
+				SetCursor(1,1);
 				SetDisplayText(mu08Minute);
 				mu08Second = 0;
 				if(mu08Minute >= 60)
@@ -38,12 +39,3 @@ PUBLIC void ApplicationManager(void)
 	}
 }
 
-PUBLIC U08 GetMinute(void)
-{
-	return mu08Second;
-}
-
-PUBLIC void ResetMinute(void)
-{
-	mu08Minute = 0;
-}
