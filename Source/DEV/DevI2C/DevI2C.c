@@ -2,6 +2,7 @@
 
 #define LCD_ADDRESS 0x4E // Địa chỉ của màn hình LCD
 
+
 PRIVATE void DelayMs(U32 u32DalayMs);
 PRIVATE void LCDWriteCommand(U08 u08Command);
 PRIVATE void LCDWriteData(U08 u08Data);

@@ -11,6 +11,16 @@
 
 #include "Keyword.h"
 
+typedef struct Data_Packet{
+	U08 u08Row;
+	U08 u08Colum;
+	U08 u08DataDisplay;
+	U08 u08DataSound;
+	//Other data
+}DATAPACKET;
+
+extern DATAPACKET gsuRecieveDataPacket;
+
 PRIVATE U16 CaculateCheckSum(U08* pData, U16 u16DataSize)
 {
 	    U16 u16Checksum = 0;

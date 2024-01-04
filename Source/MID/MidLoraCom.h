@@ -20,6 +20,7 @@ PUBLIC void MidLoraInit(void);
 PUBLIC void MidLoraCommLoop(void);
 PUBLIC void SetDisplayText(U08 u08Data);
 PUBLIC void SetSound(U08 u08Data);
+PUBLIC void SetCursor(U08 u08Row,U08 u08Colum);
 
 
 

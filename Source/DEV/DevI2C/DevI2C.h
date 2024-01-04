@@ -14,11 +14,14 @@
 #include "Macro.h"
 #include "Keyword.h"
 #include "SysTimer.h"
+#include "SystemLib.h"
+#include "stdio.h"
 
 PUBLIC void DevLCDInit(void);
 PUBLIC void DevLCDSetCursor(U08 row, U08 col);
 PUBLIC void DevLCDPrintString(char *str);
 PUBLIC void DevLCDClear(void);
+
 
 
 #endif /* DEV_DEVI2C_DEVI2C_H_ */

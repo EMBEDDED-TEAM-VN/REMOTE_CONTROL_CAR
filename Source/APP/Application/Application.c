@@ -14,7 +14,6 @@ PUBLIC void ApplicationInit(void)
 }
 PUBLIC void ApplicationManager(void)
 {
-	char mau08Test[1] ={0};
 	if(gbfSys100mSecFlag == TRUE)
 	{
 		mu08SecondCnt++;
@@ -22,15 +21,12 @@ PUBLIC void ApplicationManager(void)
 		{
 			mu08SecondCnt = 0;
 			mu08Second++;
-			//DevLCDClear();
-			DevLCDSetCursor(0, 1);
-			sprintf(mau08Test,"%0d",mu08Second);
-			DevLCDPrintString(mau08Test);
-			//SetDisplayText(mu08Second);
+			SetCursor(0,0);
 			SetSound(mu08Second);
 			if(mu08Second >= 60)
 			{
 				mu08Minute++;
+				SetCursor(1,1);
 				SetDisplayText(mu08Minute);
 				mu08Second = 0;
 				if(mu08Minute >= 60)
@@ -43,12 +39,3 @@ PUBLIC void ApplicationManager(void)
 	}
 }
 
-PUBLIC U08 GetMinute(void)
-{
-	return mu08Second;
-}
-
-PUBLIC void ResetMinute(void)
-{
-	mu08Minute = 0;
-}

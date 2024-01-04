@@ -1,20 +1,20 @@
 #include "MidLoraCom.h"
 
 #define BUFFER_LORA_RECEIVE_SIZE      400
-#define BUFFER_LORA_PROCESS_SIZE      10
+#define BUFFER_LORA_PROCESS_SIZE      8
 #define RECEIVE_SERVICE_SIZE		  1
-#define SIZE_DATA_PACKET  10
+#define SIZE_DATA_PACKET  8
 #define SIZE_DATA_DISPLAY  1
 #define SIZE_DATA_SOUND  1
+#define TIME_OUT_RECEIVE_DATA  20
 
+DATAPACKET gsuRecieveDataPacket;
+PRIVATE DATAPACKET TransmitDataPacket;
 PRIVATE U08 mau08DataTransmit[SIZE_DATA_PACKET];
-PRIVATE U08 mau08DataDisplay[SIZE_DATA_DISPLAY];
-PRIVATE U08 mau08DataSound[SIZE_DATA_SOUND];
 
 PRIVATE U08 mau08BufferLoraReceive[BUFFER_LORA_RECEIVE_SIZE];
 PRIVATE U08 mau08BufferLoraProcessing[BUFFER_LORA_PROCESS_SIZE];
 PRIVATE U08 mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE];
-PRIVATE U08 mau08BufferTest[BUFFER_LORA_PROCESS_SIZE];
 PRIVATE U08 mu08ReceivePushIndex;
 PRIVATE U08 mu08ReceivePopIndex;
 PRIVATE U08 mu08ReceiveDataPacketLoraIndex;
@@ -39,25 +39,30 @@ PUBLIC void MidLoraInit(void)
 	memset(mau08BufferLoraDataPacket, 0, BUFFER_LORA_PROCESS_SIZE);
 	memset(mau08TransmitLoraData, 0, BUFFER_LORA_PROCESS_SIZE);
 	memset(mau08DataTransmit,0,SIZE_DATA_PACKET);
-	memset(mau08DataDisplay,0,SIZE_DATA_DISPLAY);
-	memset(mau08DataSound,0,SIZE_DATA_SOUND);
-	memset(mau08BufferTest, 0, BUFFER_LORA_PROCESS_SIZE);
+	memset(&gsuRecieveDataPacket, 0, sizeof(DATAPACKET));
+	memset(&TransmitDataPacket, 0, sizeof(DATAPACKET));
 	LORA_COMM(RECEIVE_SERVICE_SIZE,ReceiveServiceLoraUART);
 }
 
 PUBLIC void SetDisplayText(U08 u08Data)
 {
-	U08 u08Index =0;
-	mau08DataDisplay[u08Index] = u08Data;
+	TransmitDataPacket.u08DataDisplay = u08Data;
 	bmSendData = TRUE;
 }
 
 PUBLIC void SetSound(U08 u08Data)
 {
-	U08 u08Index =0;
-	mau08DataSound[u08Index] = u08Data;
+	TransmitDataPacket.u08DataSound = u08Data;
 	bmSendData = TRUE;
 }
+
+PUBLIC void SetCursor(U08 u08Row,U08 u08Colum)
+{
+	TransmitDataPacket.u08Row = u08Row;
+	TransmitDataPacket.u08Colum = u08Colum;
+	bmSendData = TRUE;
+}
+
 
 PUBLIC void MidLoraCommLoop(void)
 {
@@ -68,7 +73,7 @@ PUBLIC void MidLoraCommLoop(void)
 	if(bResultDataPacket == TRUE)
 	{
 		//Get data from data packet
-		memcpy(mau08BufferTest,mau08BufferLoraDataPacket,BUFFER_LORA_PROCESS_SIZE);
+		memcpy(&gsuRecieveDataPacket,(mau08BufferLoraDataPacket + 2),sizeof(DATAPACKET));
 	}
 	else
 	{
@@ -120,6 +125,9 @@ PRIVATE BOOL AnalystLoraDataPacket(void)
 	U08 u08Index = 0;
 	BOOL bReturn = FALSE;
 	U16 u16CheckSum = 0;
+	U16 u16CheckSum1 = 0;
+	U16 u16CheckSum2 = 0;
+
 	if(mau08BufferLoraDataPacket[u08Index] == 0X5A)// Check Header
 	{
 		bReturn = TRUE;
@@ -128,10 +136,22 @@ PRIVATE BOOL AnalystLoraDataPacket(void)
 	{
 		return FALSE;
 	}
+	u08Index++;
 
-	u16CheckSum = CaculateCheckSum(mau08BufferLoraDataPacket,(BUFFER_LORA_PROCESS_SIZE-1));
+	if(mau08BufferLoraDataPacket[u08Index] == sizeof(DATAPACKET))
+	{
+		bReturn = TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
 
-	if(u16CheckSum == mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE - 1])//Check Checksum
+	u16CheckSum = CaculateCheckSum(mau08BufferLoraDataPacket,(BUFFER_LORA_PROCESS_SIZE-2));
+	u16CheckSum1 = (u16CheckSum&0x00ff);
+	u16CheckSum2 = (u16CheckSum >> 8);
+	if((u16CheckSum1 == mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE - 2])
+	&&(u16CheckSum2 == mau08BufferLoraDataPacket[BUFFER_LORA_PROCESS_SIZE - 1]))//Check Checksum
 	{
 		bReturn = TRUE;
 	}
@@ -147,15 +167,14 @@ PRIVATE void TransmitDataToRemote(void)
 	U08 u08Index = 0;
 	U08 u08SizeData = 0;
 	U16 u16CheckSum = 0;
-	u08SizeData = SIZE_DATA_DISPLAY + SIZE_DATA_SOUND;
+	u08SizeData = sizeof(DATAPACKET);
 	mau08DataTransmit[u08Index] = 0X5A;
 	u08Index++;
 	mau08DataTransmit[u08Index] = u08SizeData;
 	u08Index++;
-	memcpy((mau08DataTransmit + u08Index),mau08DataDisplay,SIZE_DATA_DISPLAY);
-	u08Index += SIZE_DATA_DISPLAY;
-	memcpy((mau08DataTransmit + u08Index),mau08DataSound,SIZE_DATA_SOUND);
-	u16CheckSum = CaculateCheckSum(mau08DataTransmit,(SIZE_DATA_PACKET-1));
-	mau08DataTransmit[SIZE_DATA_PACKET-1] = u16CheckSum;
+	memcpy((mau08DataTransmit + u08Index),&TransmitDataPacket,sizeof(DATAPACKET));
+	u16CheckSum = CaculateCheckSum(mau08DataTransmit,(SIZE_DATA_PACKET-2));
+	mau08DataTransmit[SIZE_DATA_PACKET-2] = (u16CheckSum&0x00ff);
+	mau08DataTransmit[SIZE_DATA_PACKET-1] = (u16CheckSum >> 8);
 	DevSetUART1TransmitData(mau08DataTransmit,SIZE_DATA_PACKET);
 }
